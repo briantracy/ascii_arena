@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 
-def main():
-    print('client')
+import argparse
+
+def main(username, server):
+    print(f'connection to {server} as {username}')
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description="ascii_arena")
+    parser.add_argument('-u', '--username')
+    parser.add_argument('-s', '--server')
+    args = parser.parse_args()
+    if not args.username:
+        args.username = input('username: ')
+    if not args.server:
+        args.server = input('server: ')
+    main(args.username, args.server)
